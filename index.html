@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1" />
+  <title>小记</title>
+  <link rel="stylesheet" href="/style.css" />
+</head>
+<body>
+
+  <!-- 登录 / 注册界面 -->
+  <div id="authScreen" class="auth-screen">
+    <div class="auth-card">
+      <div class="auth-mark">小</div>
+      <h1 class="auth-title">小记</h1>
+      <p class="auth-sub">一些刚发生的事</p>
+
+      <div class="auth-tabs">
+        <button id="tabLogin" class="auth-tab active" type="button">登录</button>
+        <button id="tabRegister" class="auth-tab" type="button">注册</button>
+      </div>
+
+      <form id="authForm">
+        <input id="authName" type="text" placeholder="名字" maxlength="20" autocomplete="username" required />
+        <input id="authPassword" type="password" placeholder="密码（至少4位）" maxlength="64" autocomplete="current-password" required />
+        <button type="submit" class="auth-submit" id="authSubmitBtn">登录</button>
+      </form>
+
+      <p id="authError" class="auth-error" hidden></p>
+    </div>
+  </div>
+
+  <!-- 主界面 -->
+  <div id="app" class="app" hidden>
+    <header class="header">
+      <div class="header-inner">
+        <span class="header-mark">小</span>
+        <h1 class="header-title">小记</h1>
+        <span class="header-sub" id="headerUser"></span>
+        <button id="logoutBtn" class="logout-btn" type="button">退出</button>
+      </div>
+    </header>
+
+    <main class="feed" id="feed">
+      <div class="loading-row" id="loadingRow">正在加载…</div>
+    </main>
+
+    <button id="composeFab" class="fab" aria-label="写一条新动态" type="button">
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="none">
+        <path d="M4 20L14.5 9.5M14.5 9.5L17 4L20 7L14.5 9.5Z" stroke="#FAF6EF" stroke-width="1.6" stroke-linejoin="round" stroke-linecap="round"/>
+        <path d="M4 20L6 14.5" stroke="#FAF6EF" stroke-width="1.6" stroke-linecap="round"/>
+      </svg>
+    </button>
+  </div>
+
+  <!-- 发布动态弹层 -->
+  <div id="composeOverlay" class="overlay" hidden>
+    <div class="sheet">
+      <div class="sheet-head">
+        <span class="sheet-title">新动态</span>
+        <button id="closeCompose" class="icon-btn" type="button" aria-label="关闭">✕</button>
+      </div>
+      <textarea id="composeText" class="textarea" placeholder="这一刻，在想什么……" maxlength="500"></textarea>
+      <div class="sheet-foot">
+        <span class="char-count" id="charCount">0/500</span>
+        <button id="publishBtn" class="publish-btn" type="button">发布</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- 评论弹层 -->
+  <div id="commentOverlay" class="overlay" hidden>
+    <div class="comment-sheet">
+      <div class="sheet-head">
+        <span class="sheet-title" id="commentTitle">评论</span>
+        <button id="closeComment" class="icon-btn" type="button" aria-label="关闭">✕</button>
+      </div>
+      <div class="comment-list" id="commentList"></div>
+      <div class="comment-input-row">
+        <input id="commentInput" type="text" placeholder="写下你的评论" maxlength="200" />
+        <button id="sendComment" class="send-btn" aria-label="发送评论" type="button">➤</button>
+      </div>
+    </div>
+  </div>
+
+  <div id="toast" class="toast" hidden></div>
+
+  <script src="/app.js"></script>
+</body>
+</html>
