@@ -241,6 +241,7 @@ button:focus-visible { outline: 2px solid #B08968; outline-offset: 2px; }
   display: flex; align-items: flex-end; justify-content: center;
   z-index: 50;
 }
+.overlay[hidden] { display: none; }
 .sheet, .comment-sheet {
   background: var(--card); width: 100%; max-width: 480px;
   border-radius: 18px 18px 0 0; padding: 16px 18px 22px;
